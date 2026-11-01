@@ -15,7 +15,7 @@ class MLP:
     def __call__(self, inputs):
         h = (inputs @ self.W1 + self.b1).tanh()
         h = (h @ self.W2 + self.b2).tanh()
-        h = (h @ self.W3 + self.b2).tanh()
+        h = (h @ self.W3 + self.b3).tanh()
         return h @ self.W4 + self.b4
 
     def parameters(self):

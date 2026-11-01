@@ -76,4 +76,6 @@ np.savez(
     b2=model.b2.data,
     W3=model.W3.data,
     b3=model.b3.data,
+    W4=model.W4.data,
+    b4=model.b4.data,
 )
