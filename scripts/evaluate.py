@@ -1,9 +1,13 @@
-from Model import MLP
 import numpy as np
 import pandas as pd
-import Function as F
+import sys
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+from src.model import MLP
+import src.functions as F
 
-test_set = pd.read_csv('data/test.csv')
+test_set = pd.read_csv(PROJECT_ROOT / "data" / "train.csv")
 pixels_test = test_set.drop(columns = 'label').to_numpy(dtype = np.float64)
 labels_test = test_set['label'].to_numpy(dtype = np.int64)
 
@@ -29,7 +33,7 @@ print("Untrained Accuracy: ", untrain_accuracy)
 #trained model:
 trained_model = MLP()
 
-with np.load("model_weights.npz") as weights:
+with np.load("my_weights.npz") as weights:
     trained_model.W1.data = weights["W1"].copy()
     trained_model.b1.data = weights["b1"].copy()
     trained_model.W2.data = weights["W2"].copy()

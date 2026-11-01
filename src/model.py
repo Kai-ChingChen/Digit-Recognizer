@@ -1,4 +1,4 @@
-from Value import Value
+from .autograd import Value
 import numpy as np
 class MLP:
     def __init__(self, seed = 42):

@@ -1,14 +1,19 @@
 import numpy as np
 import pandas as pd
-import math
-from Value import Value
-import Function as F
-from Model import MLP
-seed = 42
+import sys
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.autograd import Value
+import src.functions as F
+from src.model import MLP
+
+seed = 42   
 rng = np.random.default_rng(seed)
 
 #load data
-data  = pd.read_csv('data/train.csv')
+data  = pd.read_csv(PROJECT_ROOT / "data" / "train.csv")
 pixels = data.drop(columns='label').to_numpy(dtype = np.float64)
 labels = data['label'].to_numpy(dtype = np.int64)
 X = pixels / 255.0  # Normalize pixel values to [0, 1]
@@ -69,7 +74,7 @@ for i in range(len(example_ids)):
 
 #save the model
 np.savez(
-    "model_weights.npz",
+    "my_weights.npz",
     W1=model.W1.data,
     b1=model.b1.data,
     W2=model.W2.data,

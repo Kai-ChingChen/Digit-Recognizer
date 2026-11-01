@@ -1,4 +1,4 @@
-from Value import Value
+from .autograd import Value
 import numpy as np
 
 def cross_entropy(logits, targets):
