@@ -57,7 +57,7 @@ for epoch in range(1, epochs+1):
     print(f'Epoch {epoch}/{epochs}: train loss {train_loss:.4f}, validation accuracy {val_accuracy: .2%}')
 
 #prediction
-test_set = pd.read_csv('data/test.csv')
+test_set = pd.read_csv(PROJECT_ROOT / "data" / "test.csv")
 pixels_test = test_set.drop(columns = 'label').to_numpy(dtype = np.float64)
 labels_test = test_set['label'].to_numpy(dtype = np.int64)
 

@@ -7,7 +7,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from src.model import MLP
 import src.functions as F
 
-test_set = pd.read_csv(PROJECT_ROOT / "data" / "train.csv")
+test_set = pd.read_csv(PROJECT_ROOT / "data" / "test.csv")
 pixels_test = test_set.drop(columns = 'label').to_numpy(dtype = np.float64)
 labels_test = test_set['label'].to_numpy(dtype = np.int64)
 
@@ -27,7 +27,7 @@ def predict(model):
 #untrained model:
 untrained_model = MLP(42)
 predict(untrained_model)
-untrain_accuracy = F.accuracy(untrained_model, pixels_test, labels_test)
+untrain_accuracy = F.accuracy(untrained_model, pixels_test/ 255.0, labels_test)
 print("Untrained Accuracy: ", untrain_accuracy)
 
 #trained model:
@@ -45,5 +45,5 @@ with np.load("my_weights.npz") as weights:
 
 #prediction
 predict(trained_model)
-train_accuracy = F.accuracy(trained_model, pixels_test, labels_test)
+train_accuracy = F.accuracy(trained_model, pixels_test/ 255.0, labels_test)
 print("Trained Accuracy: ", train_accuracy)
