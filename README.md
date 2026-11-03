@@ -11,5 +11,6 @@ Architecture: **784 -> 64 -> 64 -> 64 -> 10**, with `tanh` as the activation fun
 Inference: The model takes 28x28 pixels single digit input and predict the highest probablity among the probability distribution across 10 digits.
 
 ## Results
-| Untrained MLP, seed 42 | 11.06% |
-| Trained MLP | 96.65% |
+Untrained MLP, seed 42 | 11.06%
+
+Trained MLP | 96.65%
